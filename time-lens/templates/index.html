@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  <title>Time Lens — Life-Year Model v3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="box">
+  
+  <h1>Time Lens</h1>
+  <p class="sub">
+    Your rule: <b>1 real day = 1 life-year</b><br>
+    1 hour = 1 month · 1 minute = 1 day · 1 second = 1 hour
+  </p>
+  <p>“When every minute becomes a day, life stops being routine and starts being intentional.”</p>
+
+  <form id="form">
+    <label>How much real time?</label>
+    <input id="value" type="number" value="20" required>
+
+    <label>Unit</label>
+    <select id="unit">
+      <option value="seconds">seconds</option>
+      <option value="minutes">minutes</option>
+      <option value="hours" selected>hours</option>
+      <option value="days">days</option>
+    </select>
+
+    <button type="submit">Translate Time</button>
+  </form>
+
+  <div id="output"></div>
+
+</div>
+
+
+<script>
+  const form = document.getElementById("form");
+  const output = document.getElementById("output");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      value: parseFloat(document.getElementById("value").value),
+      unit: document.getElementById("unit").value
+    };
+
+    const res = await fetch("/convert", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+
+    const actionList = json.actions.map(a => `<li>${a}</li>`).join("");
+
+    output.innerHTML = `
+      <div class="result">
+
+        <h3>Your Time Conversion</h3>
+        <p><b>${json.input}</b> becomes:</p>
+
+        <p>${json.life_days} life-days</p>
+        <p>${json.life_months} life-months</p>
+        <p>${json.life_years} life-years</p>
+
+        <br>
+
+        <h3>${json.window}</h3>
+
+        <p><b>Why this matters:</b> ${json.why}</p>
+
+        <p><b>What you can do now:</b></p>
+        <ul>${actionList}</ul>
+
+        <p><b>Deep Insight:</b> ${json.deep}</p>
+
+        <p><b>If you waste this:</b> ${json.warning}</p>
+
+        <p><b>Who you become if you use it well:</b> ${json.become}</p>
+
+      </div>
+    `;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+body{
+  font-family: Inter, Arial, sans-serif;
+  background:#f3f6fb;
+  display:flex;
+  height:100vh;
+  align-items:center;
+  justify-content:center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 30px;
+}
+.card{
+  background:white;
+  padding:22px;
+  width:460px;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(20,30,60,0.08);
+}
+h1{margin:0 0 6px 0;font-size:22px}
+.subtitle{color:#556; margin:0 0 14px 0}
+.row{display:flex;flex-direction:column;margin-bottom:10px}
+label{font-size:12px;color:#415; margin-bottom:6px}
+input,select,button{padding:8px 10px;border-radius:8px;border:1px solid #e6ecf3}
+button{background:#2438ff;color:white;border:none;cursor:pointer;margin-top:6px}
+.output{margin-top:14px;padding:10px;background:#fbfcff;border-radius:8px;border:1px solid #eef4ff}
+.err{color:#b00}
+.footer{margin-top:14px;color:#99a}
+
+
+/* for responsive design */
+@media (max-width: 520px) {
+
+  /* Prevent overflow from fixed height */
+  body {
+    height: auto;
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  /* Make card fit smaller screens */
+  .card {
+    width: 100%;
+    max-width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* Slightly reduce font sizes */
+  h1 {
+    font-size: 20px;
+  }
+
+  input, select, button {
+    font-size: 15px;
+    padding: 9px 10px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+}
