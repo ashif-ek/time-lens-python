@@ -46,7 +46,8 @@ Built with a custom **advanced suggestion engine**.
 ---
 
 ## Tech Stack
-- Python 
+- Python
+- FastApi
 - Uvicorn  
 - HTML + CSS  
 - JavaScript  
@@ -99,6 +100,7 @@ http://127.0.0.1:8000
 
 
 https://github.com/user-attachments/assets/456cb24e-5b67-4d70-bcab-4885145a2e46
+
 
 
 
