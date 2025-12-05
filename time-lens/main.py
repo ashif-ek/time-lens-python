@@ -12,13 +12,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
-# ------------------------------------------------------------
-#  LIFE-YEAR MODEL
-#  1 day = 1 life-year
-#  1 hour = 1 life-month
-#  1 minute = 1 life-day
-#  1 second = 1 life-hour
-# ------------------------------------------------------------
+#   life year model
+#   1 day = 1 life-year
+#   1 hour = 1 life-month
+#   1 minute = 1 life-day
+#   1 second = 1 life-hour
+
 
 UNIT_TO_SECONDS = {
     "seconds": 1,
@@ -43,11 +42,6 @@ def convert_to_life_model(value, unit):
         "life_years": round(seconds / 86400, 4),
     }
 
-
-
-# ------------------------------------------------------------
-#  ADVANCED SUGGESTION ENGINE v2
-# ------------------------------------------------------------
 
 def generate_suggestion(model):
     d = model["life_days"]
